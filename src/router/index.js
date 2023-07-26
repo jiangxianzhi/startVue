@@ -2,7 +2,7 @@ import egg from '../components/egg.vue'
 import apple1 from '../components/apple.vue'
 import changeString from '../components/changeString.vue'
 import {createRouter ,createWebHistory} from 'vue-router'
-
+// 静态路由
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -14,5 +14,6 @@ path:'/apple',component: apple1
     }
     ]
   })
+  console.log(egg);
 
   export default router
