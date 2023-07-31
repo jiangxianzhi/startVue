@@ -4,6 +4,7 @@
 </template>
 
 <script>
+// 显示json对象的 组件
 import items from '../../item.json'
 
 export default {
