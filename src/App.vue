@@ -88,18 +88,28 @@
 
 </div>
 <!-- <watchUsage></watchUsage> -->
-<propTitle v-for="item in items" :key="item.id" :title ="item.name"></propTitle>
+<!-- <div :style="{fontSize:fontsizeOftitleComponent+'em'}">
+  <propTitle @smaller="fontsizeOftitleComponent=fontsizeOftitleComponent-0.5" @bigger="fontsizeOftitleComponent=fontsizeOftitleComponent+1" v-for="item in items" :key="item.id" :title1 ="item.name"></propTitle>
+</div> -->
+
+<!-- slot demo 插入像html在标签中插入 字 -->
+<slotDemo> 
+
+</slotDemo>
 
 </template>
 
 <script>
 import items from '../item.json'
+// 注册子组件1，只能在这个App.vue中用，其他地方用不了
 import ChangeString from './components/changeString.vue'
 import ShowItems from './components/showItems.vue'
 // vue组件生命周期
 import hookedFunction from './components/hookedFunction.vue'
 import watchUsage from './components/watchUsage.vue'
 import propTitle from './components/propTitle.vue'
+import slotDemo from './components/slotDemo.vue'
+import GlobelComponets1 from './components/globelComponents/globelComponets1.vue'
 
 export default {
   
@@ -122,11 +132,16 @@ export default {
       ],
       msg1:'',
       msg2:'',
-      msg3:'msg3'
+      msg3:'msg3',
+      fontsizeOftitleComponent:3
     }
+    
   },
+
   components: { ShowItems, hookedFunction,
-        ChangeString,watchUsage,propTitle },
+    ChangeString, watchUsage, propTitle, slotDemo, GlobelComponets1 },
+      // 注册子组件2
+  // 当没有被使用的时候，tree-shaking会把这些没有使用的，局部注册的components删除
   methods: {
     changeAwsome() {
       if (this.judgeAwsome) {

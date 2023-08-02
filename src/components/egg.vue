@@ -9,6 +9,7 @@
   export default {
  
     name: 'MyComponent',
+    // 路由？
     computed:{
 username(){
     return this.$route.params.username

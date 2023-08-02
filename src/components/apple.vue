@@ -9,6 +9,7 @@
 <script>
 export default{
     name:'AppleTemplate',
+    // data中的数据双向绑定
     data(){
         return {
             string1:'apple'

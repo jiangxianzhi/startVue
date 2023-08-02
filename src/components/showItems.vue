@@ -4,7 +4,7 @@
 </template>
 
 <script>
-// 显示json对象的 组件
+// 显示json被引入，变成了js对象，同一个json文件可以被多个不同组件引入
 import items from '../../item.json'
 
 export default {
@@ -14,6 +14,7 @@ export default {
     }
   },
   methods: {},
+  // 计算属性
   computed: {
     itemsExist(){
       return this.items.length>0?"yes":"no";

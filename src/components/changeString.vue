@@ -17,12 +17,13 @@ export default{
     },
     methods: {
         changeString() {
-            if( this.string1 != 'new string'){
-                this.string1 = 'new string'
-            }else{
-                this.string1 = 'string'
-            }
-           ;
+            // if( this.string1 != 'new string'){
+            //     this.string1 = 'new string'
+            // }else{
+            //     this.string1 = 'string'
+            // }
+            // 重构
+            this.string1 = !this.string1;
         }
     }
 }</script>

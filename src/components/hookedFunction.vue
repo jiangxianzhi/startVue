@@ -7,7 +7,7 @@
   
   <script>
  
-  
+  // vue小组件 自生自灭过程，添加了钩子函数体现
   export default {
     data() {
       return {
