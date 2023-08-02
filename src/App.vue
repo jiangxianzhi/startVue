@@ -18,20 +18,16 @@
   
   <h2>{{ numberAdd }}</h2> -->
 
-
-
-<!-- v-model -->
-<!-- input、textarea默认绑定value，checkbox radio默认绑定 布尔 -->
- <!-- <input v-model="message1" :placeholder="message2"> 
+  <!-- v-model -->
+  <!-- input、textarea默认绑定value，checkbox radio默认绑定 布尔 -->
+  <!-- <input v-model="message1" :placeholder="message2"> 
  <h1>{{ message1 }}</h1> -->
- <!-- label元素主要用来和input关联，增大了input勾选范围 -->
- <!-- <label for="input001">这个是input001</label>
+  <!-- label元素主要用来和input关联，增大了input勾选范围 -->
+  <!-- <label for="input001">这个是input001</label>
  <input type="checkbox" id="input001"> -->
 
-
-
- <!-- 绑定多个value到数组 -->
- <!-- <div>Checked names: {{ checkedNames }}</div>
+  <!-- 绑定多个value到数组 -->
+  <!-- <div>Checked names: {{ checkedNames }}</div>
 
 <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
 <label for="jack">Jack</label>
@@ -42,16 +38,16 @@
 <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
 <label for="mike">Mike</label> -->
 
- <!-- 绑定一个value到数组，关键在于data return中的类型 -->
- <!-- <div>Picked: {{ picked }}</div>
+  <!-- 绑定一个value到数组，关键在于data return中的类型 -->
+  <!-- <div>Picked: {{ picked }}</div>
 
 <input type="radio" id="one" value="One" v-model="picked" />
 <label for="one">One</label>
 
 <input type="radio" id="two" value="Two" v-model="picked" />
 <label for="two">Two</label> -->
-<!-- 绑定select options -->
-<!-- <div>Selected:{{ selected }}</div>
+  <!-- 绑定select options -->
+  <!-- <div>Selected:{{ selected }}</div>
 <select name="" id="" v-model="selected">
     <option disabled value="true">choose a option</option>
 <option value="a">a</option>
@@ -59,12 +55,11 @@
 <option value="c">c</option>
 <option value="d">d</option> -->
 
-<!-- 
+  <!-- 
 </select> -->
 
-
-<!-- 绑定select options ,但是options用v-for-->
-<!-- <div></div>
+  <!-- 绑定select options ,但是options用v-for-->
+  <!-- <div></div>
 <select name="" id="" >
     <option v-for="option in options" :key="option.value" :value="option.value">
     {{ option.text }}
@@ -72,31 +67,33 @@
   
 </select> -->
 
-
-<!-- .lazy使用 -->
-<!-- <h1>{{ msg1 }}</h1>
+  <!-- .lazy使用 -->
+  <!-- <h1>{{ msg1 }}</h1>
 <input type="text" v-model.lazy="msg1"> -->
 
-<!-- .number,输入转换成数字 -->
-<!-- <h1>{{ msg2 }}</h1>
+  <!-- .number,输入转换成数字 -->
+  <!-- <h1>{{ msg2 }}</h1>
 <input type="text" v-model.number="msg2"> -->
-<!-- .trim,出去输入的两端空格 -->
-<!-- <h1>{{ msg3 }}</h1>
+  <!-- .trim,出去输入的两端空格 -->
+  <!-- <h1>{{ msg3 }}</h1>
 <input type="text" v-model.trim="msg3"> -->
-<!-- <hookedFunction></hookedFunction> -->
-<div>
-
-</div>
-<!-- <watchUsage></watchUsage> -->
-<!-- <div :style="{fontSize:fontsizeOftitleComponent+'em'}">
+  <!-- <hookedFunction></hookedFunction> -->
+  <div></div>
+  <!-- <watchUsage></watchUsage> -->
+  <!-- <div :style="{fontSize:fontsizeOftitleComponent+'em'}">
   <propTitle @smaller="fontsizeOftitleComponent=fontsizeOftitleComponent-0.5" @bigger="fontsizeOftitleComponent=fontsizeOftitleComponent+1" v-for="item in items" :key="item.id" :title1 ="item.name"></propTitle>
 </div> -->
 
-<!-- slot demo 插入像html在标签中插入 字 -->
-<slotDemo> 
+  <!-- slot demo 插入像html在标签中插入 字 -->
+  <!-- <slotDemo> 
 
-</slotDemo>
+</slotDemo> -->
+<!-- 
+  <div>{{ searchText }}</div>
+  <VModelOnComponent v-model="searchText"></VModelOnComponent> -->
 
+  <!-- 透传 -->
+  <passAttributesVue class = "abc" id ="bcd"> </passAttributesVue>
 </template>
 
 <script>
@@ -110,9 +107,10 @@ import watchUsage from './components/watchUsage.vue'
 import propTitle from './components/propTitle.vue'
 import slotDemo from './components/slotDemo.vue'
 import GlobelComponets1 from './components/globelComponents/globelComponets1.vue'
-
+import VModelOnComponent from './components/v-modelOnComponent.vue'
+// 改变了vue文件的位置，那么引入都如何改变？
+import passAttributesVue from './components/fundamental/passAttributes.vue'
 export default {
-  
   data() {
     return {
       items,
@@ -120,27 +118,42 @@ export default {
       divId: 'example1',
       judgeAwsome: true,
       numberAdd: 1,
-      message2:'红颜如霜',
-      message1:"",
-      checkedNames:[],
-      picked:'',
-      selected:'',
+      message2: '红颜如霜',
+      message1: '',
+      checkedNames: [],
+      picked: '',
+      selected: '',
       options: [
         { text: 'One', value: 'A' },
         { text: 'Two', value: 'B' },
         { text: 'Three', value: 'C' }
       ],
-      msg1:'',
-      msg2:'',
-      msg3:'msg3',
-      fontsizeOftitleComponent:3
+      msg1: '',
+      msg2: '',
+      msg3: 'msg3',
+      fontsizeOftitleComponent: 3,
+      searchText: 'abc'
     }
-    
+  },
+  watch: {
+    searchText(n, o) {
+      console.log(n)
+      console.log(o)
+    }
   },
 
-  components: { ShowItems, hookedFunction,
-    ChangeString, watchUsage, propTitle, slotDemo, GlobelComponets1 },
-      // 注册子组件2
+  components: {
+    ShowItems,
+    hookedFunction,
+    ChangeString,
+    watchUsage,
+    propTitle,
+    slotDemo,
+    GlobelComponets1,
+    VModelOnComponent,
+    passAttributesVue
+  },
+  // 注册子组件2
   // 当没有被使用的时候，tree-shaking会把这些没有使用的，局部注册的components删除
   methods: {
     changeAwsome() {
@@ -150,8 +163,8 @@ export default {
       }
       this.judgeAwsome = true
     },
-    increment(){
-        this.numberAdd++;
+    increment() {
+      this.numberAdd++
     }
   },
   mounted() {
