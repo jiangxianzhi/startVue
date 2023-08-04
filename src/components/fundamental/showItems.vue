@@ -5,7 +5,7 @@
 
 <script>
 // 显示json被引入，变成了js对象，同一个json文件可以被多个不同组件引入
-import items from '../../item.json'
+import items from '../../../item.json'
 
 export default {
   data() {

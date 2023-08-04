@@ -93,24 +93,51 @@
   <VModelOnComponent v-model="searchText"></VModelOnComponent> -->
 
   <!-- 透传 -->
-  <passAttributesVue class = "abc" id ="bcd"> </passAttributesVue>
+  <!-- <passAttributesVue class = "abc" id ="bcd"> </passAttributesVue> -->
+
+
+  <!-- 插槽 -->
+  <!-- <slotRender>
+  
+    <template v-slot>
+      hello world
+    </template>
+    <template #[dynamicSlotName]>
+      hello world2
+    </template>
+  </slotRender> -->
+
+
+  <!-- inject and provide -->
+
+  <ChildInjections></ChildInjections>
 </template>
 
 <script>
 import items from '../item.json'
 // 注册子组件1，只能在这个App.vue中用，其他地方用不了
-import ChangeString from './components/changeString.vue'
-import ShowItems from './components/showItems.vue'
+import ChangeString from './components/fundamental/changeString.vue'
+import ShowItems from './components/fundamental/showItems.vue'
 // vue组件生命周期
-import hookedFunction from './components/hookedFunction.vue'
-import watchUsage from './components/watchUsage.vue'
-import propTitle from './components/propTitle.vue'
-import slotDemo from './components/slotDemo.vue'
+import hookedFunction from './components/fundamental/hookedFunction.vue'
+import watchUsage from './components/fundamental/watchUsage.vue'
+import propTitle from './components/fundamental/propTitle.vue'
+import slotDemo from './components/fundamental/slotDemo.vue'
 import GlobelComponets1 from './components/globelComponents/globelComponets1.vue'
-import VModelOnComponent from './components/v-modelOnComponent.vue'
+import VModelOnComponent from './components/fundamental/v-modelOnComponent.vue'
 // 改变了vue文件的位置，那么引入都如何改变？
 import passAttributesVue from './components/fundamental/passAttributes.vue'
+import slotRender from './deepComponent/slotRender.vue'
+import ChildInjections from './deepComponent/childInjections.vue'
+
+
+
+
 export default {
+  provide(){return{
+    message5:'hello'
+  }}
+  ,
   data() {
     return {
       items,
@@ -132,7 +159,9 @@ export default {
       msg2: '',
       msg3: 'msg3',
       fontsizeOftitleComponent: 3,
-      searchText: 'abc'
+      searchText: 'abc',
+      slotMsg:"aoe",
+      dynamicSlotName:"abv"
     }
   },
   watch: {
@@ -151,7 +180,9 @@ export default {
     slotDemo,
     GlobelComponets1,
     VModelOnComponent,
-    passAttributesVue
+    passAttributesVue,
+    slotRender,
+    ChildInjections
   },
   // 注册子组件2
   // 当没有被使用的时候，tree-shaking会把这些没有使用的，局部注册的components删除

@@ -1,6 +1,6 @@
-import egg from '../components/egg.vue'
-import apple1 from '../components/apple.vue'
-import changeString from '../components/changeString.vue'
+import egg from '../components/fundamental/egg.vue'
+import apple1 from '../components/fundamental/apple.vue'
+import changeString from '../components/fundamental/changeString.vue'
 import {createRouter ,createWebHistory} from 'vue-router'
 // 静态路由
 const router = createRouter({
