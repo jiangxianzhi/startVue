@@ -111,6 +111,11 @@
   <!-- inject and provide -->
 
   <ChildInjections></ChildInjections>
+
+  <FundamentalResponsed></FundamentalResponsed>
+
+  {{ x   }}
+  {{ y }}
 </template>
 
 <script>
@@ -129,11 +134,20 @@ import VModelOnComponent from './components/fundamental/v-modelOnComponent.vue'
 import passAttributesVue from './components/fundamental/passAttributes.vue'
 import slotRender from './deepComponent/slotRender.vue'
 import ChildInjections from './deepComponent/childInjections.vue'
+import  FundamentalResponsed from './composable/fundamentalResponsed.vue'
+
+// 组合式函数，看不懂，无状态逻辑，封装和复用有状态逻辑函数
+import {useMouse} from './composable/composableFunction'
 
 
-
+console.log(useMouse)
 
 export default {
+setup(){
+  const {x,y} = useMouse();
+  return {x,y}
+}
+  ,
   provide(){return{
     message5:'hello'
   }}
@@ -161,7 +175,9 @@ export default {
       fontsizeOftitleComponent: 3,
       searchText: 'abc',
       slotMsg:"aoe",
-      dynamicSlotName:"abv"
+      dynamicSlotName:"abv",
+    
+    
     }
   },
   watch: {
@@ -182,7 +198,9 @@ export default {
     VModelOnComponent,
     passAttributesVue,
     slotRender,
-    ChildInjections
+    ChildInjections,
+    FundamentalResponsed,
+
   },
   // 注册子组件2
   // 当没有被使用的时候，tree-shaking会把这些没有使用的，局部注册的components删除
